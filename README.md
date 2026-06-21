@@ -1,0 +1,1 @@
+This is a program made for the ASRC or the COA in Dutch. The objective of this program is to efficiently and effectively manage the intake, reception and departure of refugees from a ASC or a other accomodation. This program is lastly written in Java. 
