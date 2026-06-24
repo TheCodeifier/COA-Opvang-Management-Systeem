@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Country {
@@ -12,7 +13,15 @@ public class Country {
         this.municipalities = municipalities;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public List<Municipality> getMunicipalities() { return municipalities; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Municipality> getMunicipalities() {
+        return new ArrayList<>(municipalities);
+    }
 }

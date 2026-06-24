@@ -43,6 +43,9 @@ public class Main {
 
         FileRepository fileRepository = new FileRepository();
         FileService fileService = new FileService(fileRepository);
+        fileService.addObserver(new LoggingObserver());
+        fileService.addObserver(new NotificationBoxObserver());
+        fileService.addObserver(new ReportObserver());
 
         MunicipalityRepository municipalityRepository = new MunicipalityRepository(municipalities);
         ReportService reportService = new ReportService(municipalityRepository);

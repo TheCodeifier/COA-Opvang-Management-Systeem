@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReportService {
@@ -9,6 +10,14 @@ public class ReportService {
     }
 
     public List<String> generateMunicipalityReport() {
-        return municipalityRepository.getAll();
+        List<String> result = new ArrayList<>();
+
+        for (Municipality m : municipalityRepository.getAll()) {
+            result.add(
+                m.getName() + " - residents: " + m.getResidentsAmount()
+            );
+        }
+
+        return result;
     }
 }
