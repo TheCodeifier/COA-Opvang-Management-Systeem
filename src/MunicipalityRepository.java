@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class MunicipalityRepository {
@@ -8,7 +9,11 @@ public class MunicipalityRepository {
         this.municipalities = municipalities;
     }
 
-    public List<Municipality> getAll() {
-        return municipalities;
+    public List<String> getAll() {
+        List<String> result = new ArrayList<>();
+        for (Municipality m : municipalities) {
+            result.add(m.getName());
+        }
+        return result;
     }
 }

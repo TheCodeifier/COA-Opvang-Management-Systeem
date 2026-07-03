@@ -16,9 +16,6 @@ public class Placement {
         this.asc = asc;
     }
 
-    public int getId() { return id; }
-    public LocalDate getDate() { return date; }
-    public String getStatus() { return status; }
     public Municipality getMunicipality() { return municipality; }
     public ASC getAsc() { return asc; }
 }

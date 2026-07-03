@@ -6,8 +6,4 @@ public class COAEmployee extends Employee {
         super(id, name);
         this.role = role;
     }
-
-    public String getRole() {
-        return role;
-    }
 }

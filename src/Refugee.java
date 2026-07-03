@@ -9,7 +9,8 @@ public class Refugee {
     private File file;
     private Placement presentLocation;
 
-    public Refugee(int id, String name, LocalDate dateOfBirth, String status, File file, Placement presentLocation) {
+    public Refugee(int id, String name, LocalDate dateOfBirth, String status,
+                   File file, Placement presentLocation) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;

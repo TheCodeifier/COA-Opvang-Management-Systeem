@@ -5,44 +5,60 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Municipality Westerwolde = new Municipality(1, "Westerwolde", 25136, 100, new ArrayList<>());
-        Municipality Zeist = new Municipality(2, "Zeist", 66656, 400, new ArrayList<>());
+        Municipality westerwolde = new Municipality(1, "Westerwolde", 25136, 100, new ArrayList<>());
+        Municipality zeist = new Municipality(2, "Zeist", 66656, 400, new ArrayList<>());
 
         List<Municipality> municipalities = new ArrayList<>();
-        municipalities.add(Westerwolde);
-        municipalities.add(Zeist);
+        municipalities.add(westerwolde);
+        municipalities.add(zeist);
 
-        Country theNetherlands = new Country(1,"The Netherlands", municipalities);
+        Country theNetherlands = new Country(1, "The Netherlands", municipalities);
 
         ASC asc1 = new ASC(1, "AZC Ter Apel");
 
-        ASCEmployee ascEmployee = new ASCEmployee(1, "Josef Robbertsen", "Case Manager", asc1);
-        COAEmployee coaEmployee = new COAEmployee(2, "Gwen Berkens", "Coördinator");
-
         File file = new File(1, "Initial case notes", new ArrayList<>());
 
-        Refugee refugee = new Refugee(1, "Dariush Mehrdadian", LocalDate.of(1990, 5, 11), "Asylum seeker", file, null);
+        Refugee refugee = new Refugee(
+                1,
+                "Dariush Mehrdadian",
+                LocalDate.of(1990, 5, 11),
+                "Asylum seeker",
+                file,
+                null
+        );
 
         PlacementStrategy strategy = new HighestAvailabilityStrategy();
 
         Municipality chosenMunicipality = strategy.determineMunicipality(refugee);
-
         if (chosenMunicipality == null) {
-            chosenMunicipality = Zeist;
+            chosenMunicipality = zeist;
         }
 
         ASC chosenASC = strategy.determineASC(chosenMunicipality);
-
         if (chosenASC == null) {
             chosenASC = asc1;
         }
 
-        Placement placement = new Placement(1, LocalDate.now(), "ACTIVE", chosenMunicipality, chosenASC);
+        Placement placement = new Placement(
+                1,
+                LocalDate.now(),
+                "ACTIVE",
+                chosenMunicipality,
+                chosenASC
+        );
 
-        refugee = new Refugee(refugee.getId(), refugee.getName(), refugee.getDateOfBirth(), "PLACED", file, placement);
+        refugee = new Refugee(
+                refugee.getId(),
+                refugee.getName(),
+                refugee.getDateOfBirth(),
+                "PLACED",
+                file,
+                placement
+        );
 
         FileRepository fileRepository = new FileRepository();
         FileService fileService = new FileService(fileRepository);
+
         fileService.addObserver(new LoggingObserver());
         fileService.addObserver(new NotificationBoxObserver());
         fileService.addObserver(new ReportObserver());
@@ -50,8 +66,11 @@ public class Main {
         MunicipalityRepository municipalityRepository = new MunicipalityRepository(municipalities);
         ReportService reportService = new ReportService(municipalityRepository);
 
-        fileService.updateFile(refugee, "Refugee placed in " + chosenMunicipality.getName());
-
+        fileService.updateFile(
+                refugee,
+                "Refugee placed in " + chosenMunicipality.getName()
+        );
+        
         List<String> report = reportService.generateMunicipalityReport();
 
         System.out.println("=== REFUGEE SYSTEM TEST ===");

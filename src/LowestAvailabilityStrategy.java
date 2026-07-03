@@ -2,9 +2,7 @@ public class LowestAvailabilityStrategy implements PlacementStrategy {
 
     @Override
     public Municipality determineMunicipality(Refugee r) {
-        return r.getPresentLocation() != null
-                ? r.getPresentLocation()
-                : null;
+        return null;
     }
 
     @Override

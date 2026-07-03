@@ -8,12 +8,4 @@ public class ASCEmployee extends Employee {
         this.function = function;
         this.asc = asc;
     }
-
-    public String getFunction() {
-        return function;
-    }
-
-    public ASC getAsc() {
-        return asc;
-    }
 }

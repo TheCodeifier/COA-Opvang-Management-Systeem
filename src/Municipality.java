@@ -16,9 +16,6 @@ public class Municipality {
         this.ascs = ascs;
     }
 
-    public int getId() { return id; }
     public String getName() { return name; }
-    public int getResidentsAmount() { return residentsAmount; }
-    public int getAvailablePlaces() { return availablePlaces; }
     public List<ASC> getAscs() { return ascs; }
 }
